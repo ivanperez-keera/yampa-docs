@@ -1,0 +1,179 @@
+<!DOCTYPE html>
+<html lang="en-US">
+  <head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+<!-- Begin Jekyll SEO tag v2.6.1 -->
+<title>Functional Reactive Programming</title>
+<meta name="generator" content="Jekyll v3.8.5" />
+<meta property="og:title" content="Yampa" />
+<meta property="og:locale" content="en_US" />
+<meta name="description" content="A collection of Yampa documentation" />
+<meta property="og:description" content="A collection of Yampa documentation" />
+<link rel="canonical" href="http://frp.haskell.technology/" />
+<meta property="og:url" content="http://frp.haskell.technology/" />
+<meta property="og:site_name" content="yampa-docs" />
+<script type="application/ld+json">
+{"@type":"WebSite","url":"http://frp.haskell.technology/","name":"yampa-docs","headline":"Yampa","description":"A collection of Yampa documentation","@context":"https://schema.org"}</script>
+<!-- End Jekyll SEO tag -->
+
+    <link rel="stylesheet" href="/assets/css/style.css?v=b5eafa003780de439a811d1d49608683f65def33">
+  </head>
+  <body>
+    <div class="container-lg px-3 my-5 markdown-body">
+
+      <h1 id="frp"><a href="http://frp.haskell.technology/">Functional Reactive Programming</a></h1>
+
+      Functional Reactive Programming is an abstraction to define and reason
+      about temporal systems. In FRP, systems transform time-varying inputs
+      into time-varying outputs. The basic construct of FRP is that of a
+      signal, notionally defined as a function from time to a value. The nature
+      of time, how signals can be dfined and combined, and how they are
+      evaluated during runtime, gives rise to a multitude of FRP variants and
+      implementations.
+
+      <ul>
+        <li><a href="#implementations">Implementations</a></li>
+        <li><a href="#papers-and-technical-reports">Papers</a></li>
+        <li><a href="#talks">Talks</a></li>
+      </ul>
+
+      <a name="implementations"><h2>Implementations</h2></a>
+
+      <h3 id="yampa"><a href="http://frp.haskell.technology/">Yampa</a></h3>
+
+<p>Yampa is a domain-specific language embedded in Haskell for programming hybrid (mixed
+discrete-time and continuous-time) systems. Yampa systems are defined in terms of causal
+signal functions. Yampa was created by Henrik Nilsson and Antony Courtney around 2002-2003.</p>
+
+<h4 id="installation">Installation</h4>
+
+<p>Yampa is available on hackage: http://hackage.haskell.org/package/Yampa.</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>$ cabal sandbox init         # Optional, but recommended
+$ cabal update
+$ cabal install Yampa        # add -fexamples to include SDL and Nintendo wiimote examples
+</code></pre></div></div>
+
+<h4 id="other-examples">Usage</h4>
+
+<p>There are many programs written in Yampa. See the following examples:</p>
+
+<ul>
+  <li><a href="https://github.com/ivanperez-keera/haskanoid">Haskanoid</a>: a game that uses
+SDL multimedia, wiimote and kinect. It’s cross platform and works in desktop,
+mobile, and <a href="http://ivanperez-keera.github.io/haskanoid/haskanoid.jsexe/index.html">web</a>.
+  <li><a href="https://hackage.haskell.org/package/SpaceInvaders">Space invaders</a>.</li>
+  <li><a href="https://hackage.haskell.org/package/frag">Frag</a>: a 3D first person shooting game.</li>
+  <li><a href="https://linearity.itch.io/peoplemon">Peoplemon</a>: a role playing game.</li>
+  <li><a href="https://github.com/ksaveljev/yampa-2048">Yampa-2048</a>: an implementation of
+the game 2048 using Yampa and Gloss.</li>
+  <li><a href="https://github.com/madjestic/Haskell-OpenGL-Tutorial/tree/master/MandelbrotYampa">MandelbrotYampa</a>:
+a “hello world” using SDL2, Yampa and OpenGL.</li>
+  <li><a href="https://github.com/keera-studios/Haskelloids">Haskelloids</a>: a reproduction of the Atari 1979 classic “Asteroids”</li>
+  <li><a href="http://magiccookies.haskell.games">Magic Cookies</a>, a Haskell mobile game available for iOS and Android.</li>
+</ul>
+
+<p>A more comprehensive list can be obtained using the reverse dependency finder
+(http://packdeps.haskellers.com/reverse/Yampa), but only programs uploaded to
+hackage are listed.</p>
+
+<table>
+  <thead>
+    <tr>
+      <th><img src="https://raw.githubusercontent.com/ivanperez-keera/haskanoid/master/screenshots/android.gif?raw=true" width="200" alt="Haskanoid Video" style="max-width:200px;" /></th>
+      <th><img src="https://media.giphy.com/media/SsBOvldu1FnSyNZW1z/giphy.gif" width="200" alt="Peoplemon by Alex Stuart" style="max-width: 200px;" /></th>
+      <th><img src="http://ksaveljev.github.io/2048.gif" width="110" alt="Space Invaders" style="max-width: 110px;" /></th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>Haskanoid, SDL cross-platform arkanoid.</td>
+      <td>Peoplemon, a role playing game</td>
+      <td>Yampa2048, a gloss board game</td>
+    </tr>
+  </tbody>
+</table>
+
+<h4 id="backends">Backends</h4>
+
+<p>Yampa is backend agnostic, you can ultimately connect it to any backend you
+want. Existing backends include SDL, SDL2, OpenGL, WX, <a href="https://github.com/ivanperez-keera/haskanoid/blob/ghcjs/src/Display.hs">HTML</a>, <a href="https://github.com/ku-fpg/yampa-canvas">HTML5 canvas</a>, <a href="https://github.com/ivanperez-keera/yampa-gloss">Gloss</a>, <a href="examples/Diagrams.hs">diagrams</a>, and <a href="https://github.com/keera-studios/keera-hails/tree/master/keera-hails-reactive-yampa">Keera Hails</a>.
+
+<h4 id="testing">Testing</h4>
+
+<p>Yampa comes with a sophisticated testing library that allows you to use
+QuickCheck to test your games, and use a time-travel debugger. These features
+are described in the paper <a href="http://dl.acm.org/authorize?N46564">Testing and Debugging Functional Reactive
+Programming</a>.</p>
+
+<p>You can find the additional projects at:</p>
+<ul>
+  <li><a href="https://github.com/ivanperez-keera/Yampa/tree/develop/extensions/testing">yampa-test</a></li>
+  <li><a href="https://github.com/keera-studios/haskell-titan">Haskell Titan</a></li>
+</ul>
+
+
+<h3 id="dunai"><a href="http://frp.haskell.technology/">Dunai</a></h3>
+
+<p>Dunai is a domain-specific language embedded in Haskell for programming reactive systems. Dunai systems are defined in terms of causal
+monadic stream functions. Dunai was created by Ivan Perez and Manuel Baerenz during 2014-2016.</p>
+
+<h4 id="installation">Installation</h4>
+
+<p>Dunai is available on hackage: http://hackage.haskell.org/package/dunai.</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>$ cabal sandbox init         # Optional, but recommended
+$ cabal update
+$ cabal install dunai
+</code></pre></div>
+
+<p>There is an implementation of Yampa on top of Dunai, called bearriver. The part included in bearriver is API compatible with Yampa. Bearriver is available on hackage: http://hackage.haskell.org/package/bearriver. You can install it with:</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>$ cabal sandbox init         # Optional, but recommended
+$ cabal update
+$ cabal install bearriver
+</code></pre></div>
+
+<h2 id="papers-and-technical-reports">Papers and technical reports</h2>
+
+<ul>
+  <li><a href="http://www.cs.nott.ac.uk/~psxip1/papers/2017-Perez-thesis-latest.pdf">Extensible and Robust Functional Reactive Programming</a> (Ivan Perez; 2017)</li>
+  <li><a href="http://dl.acm.org/authorize?N46564">Testing and Debugging Functional Reactive Programming</a> (Ivan Perez and Henrik Nilsson; 2017)</li>
+  <li><a href="http://dl.acm.org/authorize?N34896">Functional Reactive Programming, Refactored</a> (Ivan Perez, Manuel Bärenz, and Henrik Nilsson; 2016)</li>
+  <li><a href="http://dl.acm.org/authorize?N08595">Safe Functional Reactive Programming through Dependent Types</a> (Neil Sculthorpe and Henrik Nilsson; 2009)</li>
+  <li><a href="http://conal.net/papers/push-pull-frp/push-pull-frp.pdf">Push-Pull Functional Reactive Programming</a> (Conal Elliott; 2009)</li>
+  <li><a href="http://www.cs.nott.ac.uk/~psznhn/Publications/padl2008.pdf">Switched-on Yampa: Declarative Programming of Modular Synthesizers</a> (George Giorgidze and Henrik Nilsson; 2008)</li>
+  <li><a href="http://dl.acm.org/authorize?N08596">Demo-outline: Switched-on Yampa: Programming Modular Synthesizers in Haskell</a> (George Giorgidze and Henrik Nilsson; 2007)</li>
+  <li><a href="http://dl.acm.org/authorize?N08598">Dynamic Optimization for Functional Reactive Programming using Generalized Algebraic Data Types</a> (Henrik Nilsson; 2005)</li>
+  <li><a href="http://dl.acm.org/authorize?N08599">The Yampa Arcade</a> (Antony Courtney, Henrik Nilsson, and John Peterson; 2003)</li>
+  <li><a href="http://www.cs.nott.ac.uk/~psznhn/Publications/afp2002.pdf">Arrows, Robots, and Functional Reactive Programming</a> (Paul Hudak, Antony Courtney, Henrik Nilsson, and John Peterson; 2002)</li>
+  <li><a href="http://dl.acm.org/authorize?N08592">Functional Reactive Programming, Continued</a> (Henrik Nilsson, Antony Courtney, and John Peterson; 2002)</li>
+  <li>
+    <p><a href="http://conal.net/papers/genuinely-functional-guis.pdf">Genuinely Functional User Interfaces</a> (Antony Courtney and Conal Elliott; 2001)</p>
+  </li>
+  <li>See also:
+    <ul>
+      <li><a href="doc/diagrams/Diagrams.md">Collection of Yampa diagrams</a></li>
+      <li><a href="http://www.cs.nott.ac.uk/~psznhn/papers.html">Henrik Nilsson’s publications</a></li>
+      <li><a href="http://www.cs.nott.ac.uk/~psxip1/">Ivan Perez’s publications </a></li>
+      <li><a href="http://www.cs.nott.ac.uk/~psxip1/papers/2014-Perez-1st-year-report.pdf">First Year PhD Report</a> (Ivan Perez, 2014), chapter 3 includes a review of FRP and outlines some existing issues.</li>
+    </ul>
+  </li>
+</ul>
+
+
+<a name="talks"><h1>Talks</h1></a>
+<ul>
+  <li><a href="http://www.cs.nott.ac.uk/~psxip1/talks/talks-2017-icfp-testingfrp/index.html">Ivan Perez (with Henrik Nilsson): ICFP 2017: Testing and Debugging FRP</a></li>
+  <li><a href="http://www.cs.nott.ac.uk/~psxip1/talks/talks-2016-haskellsym-frprefactored.pdf">Ivan Perez (with Manuel Baerenz and Henrik Nilsson): Haskell Symposium 2016: Functional Reactive Programming, Refactored</a></li>
+  <li><a href="http://www.cs.nott.ac.uk/~psxip1/talks/talks-2015-haskellsym-reactivevalues.pdf">Ivan Perez (with Henrik Nilsson): Haskell Symposium 2015: Briding the GUI Gap with Reactive Values and Relations</a></li>
+  <li><a href="http://www.cs.nott.ac.uk/~psxip1/talks/talks-2014-06-haskell-meetup-london/index.html">Ivan Perez: Haskell Meetup Group (June 2014): Functional Games, Reactivity and UIs</a></li>
+</ul>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/anchor-js/4.1.0/anchor.min.js" integrity="sha256-lZaRhKri35AyJSypXXs4o6OPFTbTmUoltBbDCbdzegg=" crossorigin="anonymous"></script>
+    <script>anchors.add();</script>
+
+  </body>
+</html>
