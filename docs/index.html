@@ -46,16 +46,22 @@
 
 <p>Yampa is a domain-specific language embedded in Haskell for programming hybrid (mixed
 discrete-time and continuous-time) systems. Yampa systems are defined in terms of causal
-signal functions. Yampa was created by Henrik Nilsson and Antony Courtney around 2002-2003.</p>
+signal functions. Yampa was created by Henrik Nilsson and Antony Courtney around 2002-2003
+Yampa is backend agnostic, you can connect it to any backend you want. Existing
+backends include SDL, SDL2, OpenGL, WX, <a
+href="https://github.com/ivanperez-keera/haskanoid/blob/ghcjs/src/Display.hs">HTML</a>,
+<a href="https://github.com/ku-fpg/yampa-canvas">HTML5 canvas</a>, <a
+href="https://github.com/ivanperez-keera/yampa-gloss">Gloss</a>, <a
+href="examples/Diagrams.hs">diagrams</a>, and <a
+href="https://github.com/keera-studios/keera-hails/tree/master/keera-hails-reactive-yampa">Keera
+Hails</a>.  It comes with a <a
+href="https://github.com/ivanperez-keera/Yampa/tree/develop/extensions/testing">testing
+library</a> that allows you to use QuickCheck to test your games, and a <a
+href="https://github.com/keera-studios/haskell-titan">time-travel debugger</a>.
+</p>
 
-<h4 id="installation">Installation</h4>
-
-<p>Yampa is available on hackage: http://hackage.haskell.org/package/Yampa.</p>
-
-<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>$ cabal sandbox init         # Optional, but recommended
-$ cabal update
-$ cabal install Yampa        # add -fexamples to include SDL and Nintendo wiimote examples
-</code></pre></div></div>
+<p>Yampa is actively maintained and updated, and is available on hackage:
+http://hackage.haskell.org/package/Yampa.</p>
 
 <h4 id="other-examples">Usage</h4>
 
@@ -96,24 +102,6 @@ hackage are listed.</p>
     </tr>
   </tbody>
 </table>
-
-<h4 id="backends">Backends</h4>
-
-<p>Yampa is backend agnostic, you can ultimately connect it to any backend you
-want. Existing backends include SDL, SDL2, OpenGL, WX, <a href="https://github.com/ivanperez-keera/haskanoid/blob/ghcjs/src/Display.hs">HTML</a>, <a href="https://github.com/ku-fpg/yampa-canvas">HTML5 canvas</a>, <a href="https://github.com/ivanperez-keera/yampa-gloss">Gloss</a>, <a href="examples/Diagrams.hs">diagrams</a>, and <a href="https://github.com/keera-studios/keera-hails/tree/master/keera-hails-reactive-yampa">Keera Hails</a>.
-
-<h4 id="testing">Testing</h4>
-
-<p>Yampa comes with a sophisticated testing library that allows you to use
-QuickCheck to test your games, and use a time-travel debugger. These features
-are described in the paper <a href="http://dl.acm.org/authorize?N46564">Testing and Debugging Functional Reactive
-Programming</a>.</p>
-
-<p>You can find the additional projects at:</p>
-<ul>
-  <li><a href="https://github.com/ivanperez-keera/Yampa/tree/develop/extensions/testing">yampa-test</a></li>
-  <li><a href="https://github.com/keera-studios/haskell-titan">Haskell Titan</a></li>
-</ul>
 
 
 <h3 id="dunai"><a href="http://frp.haskell.technology/">Dunai</a></h3>
